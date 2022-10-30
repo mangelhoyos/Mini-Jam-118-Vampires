@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,6 +10,8 @@ public class EnemyIA : MonoBehaviour
     private Transform gunTransform;
 
     [Header("Character behaviour setup")]
+    [SerializeField]
+    private bool isStatic;
     [SerializeField]
     private float coroutineFrequency;
     [SerializeField]
@@ -37,7 +40,12 @@ public class EnemyIA : MonoBehaviour
     private void OnEnable() 
     {
         targetTransform = GameObject.Find(PLAYERGONAMETOFIND).transform;
-        agent = GetComponent<NavMeshAgent>();
+        try{
+            agent = GetComponent<NavMeshAgent>();
+        }catch(Exception e)
+        {
+
+        }
         StartCoroutine(nameof(MoveHandlerCoroutine));
     }
 
@@ -59,7 +67,7 @@ public class EnemyIA : MonoBehaviour
                 GameObject bullet = Instantiate(enemyBulletPrefab, shootPosition.position, Quaternion.identity);
                 bullet.transform.LookAt(targetTransform);
                 Vector3 compareTargetPos = targetTransform.position;
-                compareTargetPos.y = compareTargetPos.y - 0.6f;
+                compareTargetPos.y = compareTargetPos.y - 0.8f;
                 bullet.GetComponent<EnemyBullet>().SetObjective((compareTargetPos - transform.position).normalized);
                 Destroy(bullet, 5f);
             }
@@ -79,7 +87,8 @@ public class EnemyIA : MonoBehaviour
     {
         if(playerDistance < rotationCheckDistance)
         {
-            agent.angularSpeed = 0;
+            if(agent != null)
+                agent.angularSpeed = 0;
             Vector3 newRotationVector = targetTransform.position;
             newRotationVector.y = transform.position.y;
             transform.LookAt(newRotationVector);
@@ -87,7 +96,8 @@ public class EnemyIA : MonoBehaviour
         }
         else
         {
-            agent.angularSpeed = ANGULARSPEED;
+            if(agent != null)
+                agent.angularSpeed = ANGULARSPEED;
             isInRange = false;
         }
     }
@@ -109,6 +119,9 @@ public class EnemyIA : MonoBehaviour
 
     void MoveTowardsPlayer()
     {
+        if(isStatic)
+            return;
+
         PathfindingNode objective = PathFindingHandler.Instance.GetClosestReferencePoint(selectedNode);
         if(selectedNode != null && selectedNode != objective)
             selectedNode.isOccupied = false;

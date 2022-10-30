@@ -9,6 +9,13 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private GameObject hearthObject;
 
+    [SerializeField]
+    private NavMeshAgent agentDisable;
+    [SerializeField]
+    private EnemyIA enemyDisable;
+    [SerializeField]
+    private Rigidbody rbDisable;
+
     private static int maxHealth = 3;
     private int actualHealth;
 
@@ -48,18 +55,29 @@ public class EnemyHealth : MonoBehaviour
         isDead = true;
         hearthAnimator.SetTrigger(EXPLODEANIMATIONPARAMETER);
         Invoke(nameof(HideHearth),hearthAnimator.runtimeAnimatorController.animationClips[1].length + 0.3f);
-        GetComponent<EnemyIA>().enabled = false;
-        GetComponent<NavMeshAgent>().enabled = false;
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.isKinematic = false;
+        if(enemyDisable != null)
+            enemyDisable.enabled = false;
+
+        if(agentDisable != null)    
+            agentDisable.enabled = false;
+        rbDisable.isKinematic = false;
         Vector3 impulseDirection =  (transform.position - GameObject.Find("Player").transform.position).normalized;
         impulseDirection.y += 1f;
-        rb.AddForce(impulseDirection * impulseForce, ForceMode.Impulse);
+        rbDisable.AddForce(impulseDirection * impulseForce, ForceMode.Impulse);
 
         if(PointsManager.Instance != null)
             PointsManager.Instance.AddPoints(150);
 
-        Destroy(gameObject, 3f);
+        if(agentDisable != null)
+        {
+            Destroy(gameObject, 4f);
+            EnemySpawnHandler.Instance.actualNormalEnemies--;
+        }
+        else
+        {
+            Destroy(gameObject.transform.parent.gameObject, 4f);
+            EnemySpawnHandler.Instance.actualStaticEnemies--;
+        }
     }
 
     public void HideHearth()

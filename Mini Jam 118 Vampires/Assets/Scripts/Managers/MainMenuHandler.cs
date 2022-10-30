@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuHandler : MonoBehaviour
 {
-    private static string GAMESCENENAME = "Game";
+    private static string GAMESCENENAME = "GameViñeta";
 
     public void StartGame()
     {

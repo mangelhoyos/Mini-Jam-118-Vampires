@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Player Health")]
+    [SerializeField] private float life = 100;
+
+    [Header("Player Blood")]
     [SerializeField]
     private GameObject[] bloodAmmo;
 
@@ -88,5 +92,22 @@ public class PlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
         actualAmmoIndex = 0;
+    }
+
+    public void PlayerRecieveDamage(){
+        if(life > 0){
+            life -= 16.6666667f;
+        }else if(life <= 0){
+            
+        }
+    }
+
+    public void PlayerHeal(){
+        if(life < 100){
+            life += 16.6666667f;
+            if(life > 100){
+                life = 16.6666667f;
+            }
+        }
     }
 }

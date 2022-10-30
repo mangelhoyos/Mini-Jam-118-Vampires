@@ -5,21 +5,21 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] WallRun wallRun;
+    [SerializeField] private PlayerSmoothMovement camTilt;
 
     [SerializeField] private float sensX = 100f;
     [SerializeField] private float sensY = 100f;
 
-    [SerializeField] Transform cam = null;
-    [SerializeField] Transform orientation = null;
+    [SerializeField] private Transform cam = null;
+    [SerializeField] private Transform orientation = null;
 
-    float mouseX;
-    float mouseY;
+    private float mouseX;
+    private float mouseY;
 
-    float multiplier = 0.01f;
+    private float multiplier = 0.01f;
 
-    float xRotation;
-    float yRotation;
+    private float xRotation;
+    private float yRotation;
 
     private void Start()
     {
@@ -37,7 +37,7 @@ public class PlayerLook : MonoBehaviour
 
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, wallRun.tilt);
+        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, camTilt.tilt);
         orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }

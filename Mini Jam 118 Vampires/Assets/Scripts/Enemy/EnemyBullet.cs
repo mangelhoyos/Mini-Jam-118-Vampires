@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 objective;
+    private static float SPEED = 20f;
+
+    public void SetObjective(Vector3 targetObjective)
     {
-        
+        objective = targetObjective;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(objective != null)
+        {
+            transform.position += objective * SPEED * Time.deltaTime;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Player"))
+        {
+            Debug.Log("Shoot");
+        }
+        else{
+            Destroy(gameObject);
+        }
     }
 }

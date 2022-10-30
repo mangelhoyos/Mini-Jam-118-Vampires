@@ -14,6 +14,15 @@ public class EnemyIA : MonoBehaviour
     [SerializeField]
     private float rotationCheckDistance;
 
+    [Header("Enemy attack setup")]
+    [SerializeField]
+    private GameObject enemyBulletPrefab;
+    [SerializeField]
+    private Transform shootPosition;
+    [SerializeField]
+    private float shootFireRate;
+    private float actualTimer;
+
     private NavMeshAgent agent;
 
     private Transform targetTransform;
@@ -21,6 +30,7 @@ public class EnemyIA : MonoBehaviour
 
     private static float ANGULARSPEED = 120;
     private float playerDistance;
+    private bool isInRange;
 
     private PathfindingNode selectedNode;
    
@@ -35,6 +45,29 @@ public class EnemyIA : MonoBehaviour
     {
         RotateGunTowardsPlayer();
         CheckRotateCharacterTowardsPlayer();
+        ShootToPlayer();
+    }
+
+    void ShootToPlayer()
+    {
+        if(isInRange)
+        {
+            actualTimer += Time.deltaTime;
+            if(actualTimer >= shootFireRate)
+            {
+                actualTimer = 0;
+                GameObject bullet = Instantiate(enemyBulletPrefab, shootPosition.position, Quaternion.identity);
+                bullet.transform.LookAt(targetTransform);
+                Vector3 compareTargetPos = targetTransform.position;
+                compareTargetPos.y = compareTargetPos.y - 0.6f;
+                bullet.GetComponent<EnemyBullet>().SetObjective((compareTargetPos - transform.position).normalized);
+                Destroy(bullet, 5f);
+            }
+        }
+        else
+        {
+            actualTimer = 0;
+        }
     }
 
     void RotateGunTowardsPlayer()
@@ -50,10 +83,12 @@ public class EnemyIA : MonoBehaviour
             Vector3 newRotationVector = targetTransform.position;
             newRotationVector.y = transform.position.y;
             transform.LookAt(newRotationVector);
+            isInRange = true;
         }
         else
         {
             agent.angularSpeed = ANGULARSPEED;
+            isInRange = false;
         }
     }
 

@@ -7,6 +7,7 @@ public class PlayerSmoothMovement : MonoBehaviour
     private float playerHeight = 2f;
 
     [SerializeField] private Transform orientation;
+    [SerializeField] private PlayerHealth playerHealth;
 
     [Header("Camera")]
     [SerializeField] private Camera cam;
@@ -179,5 +180,9 @@ public class PlayerSmoothMovement : MonoBehaviour
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
         }
+    }
+
+    public PlayerHealth ReturnPlayerHealth(){
+        return playerHealth;
     }
 }

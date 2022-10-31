@@ -27,11 +27,8 @@ public class EnemyBullet : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Debug.Log("Shoot");
-            playerHealth = other.GetComponent<PlayerHealth>();
-            playerHealth.UseBlood();
-        }
-        else{
-            Destroy(gameObject);
+            playerHealth = other.GetComponentInParent<PlayerSmoothMovement>().ReturnPlayerHealth();;
+            playerHealth.PlayerRecieveDamage();
         }
     }
 }

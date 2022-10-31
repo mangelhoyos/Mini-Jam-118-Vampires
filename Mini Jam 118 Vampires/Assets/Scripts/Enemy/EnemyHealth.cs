@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
     private static int maxHealth = 3;
     private int actualHealth;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     private const string EXPLODEANIMATIONPARAMETER = "Explotar";
 

@@ -1,5 +1,133 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &106892949405408248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871626416450233518}
+  - component: {fileID: 7489730779731729195}
+  m_Layer: 8
+  m_Name: Disparar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1871626416450233518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106892949405408248}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.12, y: 0.969, z: 0.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2070540697594913666}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7489730779731729195
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106892949405408248}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 80fc3459b536fb1478b2422a4df65314, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 11.154889
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.666
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1627660948043213589
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6354093524963748794}
   - component: {fileID: 7155674550737118184}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Estallar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,11 +170,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9205988ecd14f8b45987e0dc51bf745c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -139,7 +267,7 @@ GameObject:
   - component: {fileID: 2070540696218363512}
   - component: {fileID: 2070540696218363510}
   - component: {fileID: 2070540696218363511}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cabeza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +447,7 @@ GameObject:
   - component: {fileID: 2070540696752595776}
   - component: {fileID: 2070540696752595838}
   - component: {fileID: 2070540696752595839}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +530,7 @@ GameObject:
   - component: {fileID: 2070540696949749818}
   - component: {fileID: 2070540696949749816}
   - component: {fileID: 2070540696949749817}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Capa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2070540697219803470}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: PistolPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +646,7 @@ GameObject:
   - component: {fileID: 2070540697444656851}
   - component: {fileID: 2070540697444656849}
   - component: {fileID: 2070540697444656850}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,9 +732,9 @@ GameObject:
   - component: {fileID: 2070540697594913665}
   - component: {fileID: 2070540697594913664}
   - component: {fileID: 2070540697594913727}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -626,6 +754,7 @@ Transform:
   - {fileID: 2070540697757413317}
   - {fileID: 3601191071275205001}
   - {fileID: 6354093524963748794}
+  - {fileID: 1871626416450233518}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -670,6 +799,7 @@ MonoBehaviour:
   enemyBulletPrefab: {fileID: 2121764619456554642, guid: da0f8e838fbca544383e30ba4df83342, type: 3}
   shootPosition: {fileID: 2070540698177171876}
   shootFireRate: 2
+  shootAudio: {fileID: 7489730779731729195}
 --- !u!114 &2070540697594913665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,6 +819,7 @@ MonoBehaviour:
   rbDisable: {fileID: 2070540697594913664}
   explodeSound: {fileID: 7155674550737118184}
   latidosSound: {fileID: 5160627272234493617}
+  isDead: 0
 --- !u!54 &2070540697594913664
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -728,7 +859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2070540697757413317}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Enemie animado (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +897,7 @@ GameObject:
   - component: {fileID: 2070540697858442716}
   - component: {fileID: 2070540697858442714}
   - component: {fileID: 2070540697858442715}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Pistola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -931,7 +1062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2070540698177171876}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,7 +1094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3601191071275205001}
   - component: {fileID: 5160627272234493617}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Latidos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -995,7 +1126,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a63109981ab99904f9ba944be4fc7b37, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

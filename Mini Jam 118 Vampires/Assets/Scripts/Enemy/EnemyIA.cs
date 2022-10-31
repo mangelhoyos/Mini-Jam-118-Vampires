@@ -24,6 +24,8 @@ public class EnemyIA : MonoBehaviour
     private Transform shootPosition;
     [SerializeField]
     private float shootFireRate;
+    [SerializeField]
+    private AudioSource shootAudio;
     private float actualTimer;
 
     private NavMeshAgent agent;
@@ -63,6 +65,7 @@ public class EnemyIA : MonoBehaviour
             actualTimer += Time.deltaTime;
             if(actualTimer >= shootFireRate)
             {
+                shootAudio.Play();
                 actualTimer = 0;
                 GameObject bullet = Instantiate(enemyBulletPrefab, shootPosition.position, Quaternion.identity);
                 bullet.transform.LookAt(targetTransform);

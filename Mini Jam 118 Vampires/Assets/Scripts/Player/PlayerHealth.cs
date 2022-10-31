@@ -103,6 +103,7 @@ public class PlayerHealth : MonoBehaviour
             life -= 20;
             if(life <= 0){
                 HUDAnimator.SetTrigger("Death");
+                StartCoroutine(nameof(ReloadScene));
             }
         }
         if(life == 40){

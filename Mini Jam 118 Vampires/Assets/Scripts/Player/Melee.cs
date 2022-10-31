@@ -23,7 +23,7 @@ public class Melee : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.E)){
             if(meleeCoolDown <= 0){
                 meleeAnimator.SetTrigger("Melee");
-                meleeCoolDown = 2;
+                meleeCoolDown = 1;
                 audioSource.PlayOneShot(meleeClip);
                 if(coll != null && coll.CompareTag("Enemy")){
                     enemyHealth = coll.GetComponent<EnemyHealth>();

@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Player Health")]
+    [SerializeField] private int life = 120;
+    [SerializeField] private GameObject deathScreen;
+    private Animator HUDAnimator;
+
+    [Header("Player Blood")]
     [SerializeField]
     private GameObject[] bloodAmmo;
 
@@ -88,5 +95,29 @@ public class PlayerHealth : MonoBehaviour
             yield return new WaitForSeconds(0.15f);
         }
         actualAmmoIndex = 0;
+    }
+
+    public void PlayerRecieveDamage(){
+        HUDAnimator = deathScreen.GetComponentInChildren<Animator>();
+        if(life > 0){
+            life -= 20;
+            if(life <= 0){
+                HUDAnimator.SetTrigger("Death");
+            }
+        }
+        if(life == 40){
+            HUDAnimator.SetBool("Danger", true);
+        }
+        Debug.Log(life);
+    }
+
+    public void PlayerHeal(){
+        life = 120;
+        HUDAnimator.SetBool("Danger", false);
+    }
+
+    private IEnumerator ReloadScene(){
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

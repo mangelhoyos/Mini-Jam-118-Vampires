@@ -7,6 +7,8 @@ public class EnemyBullet : MonoBehaviour
     private Vector3 objective;
     private static float SPEED = 20f;
 
+    private PlayerHealth playerHealth;
+
     public void SetObjective(Vector3 targetObjective)
     {
         objective = targetObjective;
@@ -25,9 +27,8 @@ public class EnemyBullet : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Debug.Log("Shoot");
-        }
-        else{
-            Destroy(gameObject);
+            playerHealth = other.GetComponentInParent<PlayerSmoothMovement>().ReturnPlayerHealth();;
+            playerHealth.PlayerRecieveDamage();
         }
     }
 }

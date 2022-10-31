@@ -67,7 +67,7 @@ public class EnemyIA : MonoBehaviour
                 GameObject bullet = Instantiate(enemyBulletPrefab, shootPosition.position, Quaternion.identity);
                 bullet.transform.LookAt(targetTransform);
                 Vector3 compareTargetPos = targetTransform.position;
-                compareTargetPos.y = compareTargetPos.y - 0.8f;
+                compareTargetPos.y = compareTargetPos.y - 2.5f;
                 bullet.GetComponent<EnemyBullet>().SetObjective((compareTargetPos - transform.position).normalized);
                 Destroy(bullet, 5f);
             }

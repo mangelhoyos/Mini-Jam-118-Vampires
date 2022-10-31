@@ -7,6 +7,8 @@ public class Gun : MonoBehaviour
     [Header("Gun")]
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip shootClip;
     private int bullets = 12;
     private Animator gunAnimator;
     private float shootCoolDown = 0;
@@ -44,6 +46,7 @@ public class Gun : MonoBehaviour
             gunAnimator.SetTrigger("Shoot");
             playerHealth.ReduceAmmo();
             shootCoolDown = 2;
+            audioSource.PlayOneShot(shootClip);
             StartCoroutine(ShootLaser());
         }
     }

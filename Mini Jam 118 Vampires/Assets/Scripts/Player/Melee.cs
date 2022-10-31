@@ -6,6 +6,9 @@ public class Melee : MonoBehaviour
 {
     private float meleeCoolDown = 0;
     [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip meleeClip;
+    [SerializeField] private AudioClip souberBlood;
     private EnemyHealth enemyHealth;
     private Animator meleeAnimator;
     private Collider coll;
@@ -21,14 +24,13 @@ public class Melee : MonoBehaviour
             if(meleeCoolDown <= 0){
                 meleeAnimator.SetTrigger("Melee");
                 meleeCoolDown = 2;
+                audioSource.PlayOneShot(meleeClip);
                 if(coll != null && coll.CompareTag("Enemy")){
                     enemyHealth = coll.GetComponent<EnemyHealth>();
-                    //Debug.Log("Collider " + enemyHealth);
                     enemyHealth.ReceiveDamage();
-                    //Debug.Log("Hit");
                     if(enemyHealth.isDead){
                         playerHealth.AddBlood();
-                        //Debug.Log("Dead");
+                        audioSource.PlayOneShot(souberBlood);
                     }
                 }
             }

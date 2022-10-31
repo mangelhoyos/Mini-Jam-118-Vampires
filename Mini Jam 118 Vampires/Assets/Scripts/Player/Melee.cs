@@ -23,11 +23,13 @@ public class Melee : MonoBehaviour
                 meleeCoolDown = 2;
                 if(coll != null && coll.CompareTag("Enemy")){
                     enemyHealth = coll.GetComponent<EnemyHealth>();
+                    //Debug.Log("Collider " + enemyHealth);
                     enemyHealth.ReceiveDamage();
-                    //if(enemyHealth.isDead){
-                        playerHealth.AddBlood();
-                    //}
                     //Debug.Log("Hit");
+                    if(enemyHealth.isDead){
+                        playerHealth.AddBlood();
+                        //Debug.Log("Dead");
+                    }
                 }
             }
         }
@@ -37,7 +39,7 @@ public class Melee : MonoBehaviour
         coll = other;
     }
 
-    private void OnTriggerExit(){
+    private void OnTriggerExit(Collider other){
         coll = null;
     }
 }

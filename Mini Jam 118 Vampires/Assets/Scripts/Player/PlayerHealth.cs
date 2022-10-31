@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -103,20 +104,20 @@ public class PlayerHealth : MonoBehaviour
             if(life <= 0){
                 HUDAnimator.SetTrigger("Death");
             }
-        }else if(life == 40){
+        }
+        if(life == 40){
             HUDAnimator.SetBool("Danger", true);
         }
         Debug.Log(life);
     }
 
     public void PlayerHeal(){
-        if(life < 120){
-            life += 20;
-            if(life > 120){
-                life = 20;
-            }
-        }
+        life = 120;
+        HUDAnimator.SetBool("Danger", false);
     }
 
-    
+    private IEnumerator ReloadScene(){
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

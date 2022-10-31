@@ -16,8 +16,8 @@ public class EnemySpawnHandler : MonoBehaviour
     [SerializeField]
     private GameObject normalEnemyPrefab;
 
-    private int enemiesLimit = 6;
-    private int enemiesMax = 20;
+    private int enemiesLimit = 8;
+    private int enemiesMax = 34;
 
     public int actualNormalEnemies = 0;
     public int actualStaticEnemies = 0;
@@ -53,7 +53,7 @@ public class EnemySpawnHandler : MonoBehaviour
             }
         }
 
-        enemiesLimit++;
+        enemiesLimit += 2;
         enemiesLimit = Mathf.Clamp(enemiesLimit, 0, enemiesMax);
         yield return new WaitForSeconds(60f);
         StartCoroutine(nameof(SpawnerCoroutine));

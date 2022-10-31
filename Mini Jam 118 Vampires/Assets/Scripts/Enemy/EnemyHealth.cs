@@ -16,6 +16,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private Rigidbody rbDisable;
 
+    [SerializeField]
+    private AudioSource explodeSound;
+    [SerializeField]
+    private AudioSource latidosSound;
+
     private static int maxHealth = 3;
     private int actualHealth;
 
@@ -43,9 +48,11 @@ public class EnemyHealth : MonoBehaviour
         if(actualHealth == 1)
         {
             hearthObject.SetActive(true);
+            latidosSound.Play();
         }
         else if(actualHealth <= 1 && !isDead)
         {
+            latidosSound.Stop();
             Die();
         }
     }
@@ -53,6 +60,7 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         isDead = true;
+        explodeSound.Play();
         hearthAnimator.SetTrigger(EXPLODEANIMATIONPARAMETER);
         Invoke(nameof(HideHearth),hearthAnimator.runtimeAnimatorController.animationClips[1].length + 0.3f);
         if(enemyDisable != null)
